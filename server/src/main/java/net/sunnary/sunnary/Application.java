@@ -1,4 +1,4 @@
-package net.lmoriarty.sunnary;
+package net.sunnary.sunnary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
