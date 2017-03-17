@@ -10,7 +10,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>net.sunnary</groupId>
     <artifactId>sunnary-server</artifactId>
     <version>1.0-SNAPSHOT</version>
 
