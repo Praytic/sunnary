@@ -1,0 +1,1 @@
+java -jar server/target/sunnary-1.0-SNAPSHOT.jar
