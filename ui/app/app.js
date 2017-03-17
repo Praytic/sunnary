@@ -4,9 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngAnimate',
-  'myApp.main',
-  'myApp.version',
-  'paasb'
+  'myApp.main'
 ]).
 config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {
