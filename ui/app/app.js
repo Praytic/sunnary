@@ -4,7 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngAnimate',
-  'myApp.view1',
+  'myApp.main',
   'myApp.version',
   'paasb'
 ]).
@@ -13,5 +13,5 @@ config(['$locationProvider', '$routeProvider',
 
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);

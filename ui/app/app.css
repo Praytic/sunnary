@@ -1,25 +1,18 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+body {
+    background: url(https://drive.google.com/uc?export=view&id=0B7OeiBjEyQwPRmxwSmh4NkdZM2M) repeat;
 }
 
-.menu:before {
-  content: "[";
+.logo {
+    width: 70%;
+    margin: 0 auto;
 }
 
-.menu:after {
-  content: "]";
+.main-page.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.menu > li {
-  display: inline;
-}
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+div.paasb-searchbox {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
