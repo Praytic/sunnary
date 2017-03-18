@@ -1,8 +1,8 @@
 package net.sunnary.sunnary;
 
-import net.sunnary.sunnary.model.Article;
+import net.sunnary.sunnary.model.Content;
 import net.sunnary.sunnary.model.Tag;
-import net.sunnary.sunnary.repository.ArticleRepository;
+import net.sunnary.sunnary.repository.ContentRepository;
 import net.sunnary.sunnary.repository.TagRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,13 +17,13 @@ import java.util.*;
 public class TestDataCreator {
     private static final Logger log = LoggerFactory.getLogger(TestDataCreator.class);
 
-    private ArticleRepository articleRepository;
+    private ContentRepository contentRepository;
     private TagRepository tagRepository;
 
     @Autowired
-    public TestDataCreator(ArticleRepository articleRepository,
+    public TestDataCreator(ContentRepository contentRepository,
                            TagRepository tagRepository) {
-        this.articleRepository = articleRepository;
+        this.contentRepository = contentRepository;
         this.tagRepository = tagRepository;
     }
 
@@ -56,11 +56,11 @@ public class TestDataCreator {
         ));
 
         for (int i=0; i<10; i++) {
-            Article article = new Article();
+            Content content = new Content();
 
             int numSteps = random.nextInt(3) + 2;
             for (int j=0; j<numSteps; j++) {
-                article.getTags().add(tags.get(random.nextInt(tags.size())));
+                content.getTags().add(tags.get(random.nextInt(tags.size())));
             }
 
             int numWords = random.nextInt(3) + 4;
@@ -73,11 +73,12 @@ public class TestDataCreator {
                 }
             }
 
-            article.setName(name);
-            article.setTargetUrl("http://google.com");
-            article.setSubmissionDate(new Date());
-            articleRepository.save(article);
-            log.info("Adding article " + article.getName() + " with tags " + article.getTags().toString());
+            content.setName(name);
+            content.setTargetUrl("http://google.com");
+            content.setSubmissionDate(new Date());
+            content.setType(i % 2 == 0 ? Content.Type.ARTICLE : Content.Type.TOOL);
+            contentRepository.save(content);
+            log.info("Adding content " + content.getName() + " with tags " + content.getTags().toString());
         }
     }
 }

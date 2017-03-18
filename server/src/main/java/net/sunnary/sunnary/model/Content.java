@@ -1,6 +1,6 @@
 package net.sunnary.sunnary.model;
 
-import net.sunnary.sunnary.dto.ArticleSubmissionForm;
+import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -10,15 +10,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Article {
+public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false)
     private String targetUrl;
 
+    @Column(nullable = false)
     private long likeCounter;
 
+    @Column(nullable = false)
     private long viewCounter;
 
     @JoinTable(name = "article_tags")
@@ -26,16 +29,38 @@ public class Article {
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private Date submissionDate;
 
-    public Article() {
+    @Column(nullable = false)
+    private Type type;
+
+    public Content() {
     }
 
-    public Article(ArticleSubmissionForm dto) {
+    public Content(ContentSubmissionForm dto) {
         this.targetUrl = dto.getTargetUrl();
         this.name = dto.getName();
+    }
+
+    public void upvote() {
+        setLikeCounter(getLikeCounter() + 1);
+    }
+
+    public void downvote() {
+        setLikeCounter(getLikeCounter() - 1);
+    }
+
+    public void view() {
+        setViewCounter(getViewCounter() + 1);
+    }
+
+    public enum Type {
+        ARTICLE,
+        TOOL
     }
 
     public long getId() {
@@ -92,5 +117,13 @@ public class Article {
 
     public void setSubmissionDate(Date submissionDate) {
         this.submissionDate = submissionDate;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }

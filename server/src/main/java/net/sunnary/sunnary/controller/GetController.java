@@ -1,7 +1,7 @@
 package net.sunnary.sunnary.controller;
 
-import net.sunnary.sunnary.manager.ArticleManager;
-import net.sunnary.sunnary.model.Article;
+import net.sunnary.sunnary.manager.ContentManager;
+import net.sunnary.sunnary.model.Content;
 import net.sunnary.sunnary.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,22 +21,22 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/get/")
 public class GetController {
-    private ArticleManager articleManager;
+    private ContentManager contentManager;
 
     @Autowired
-    public GetController(ArticleManager articleManager) {
-        this.articleManager = articleManager;
+    public GetController(ContentManager contentManager) {
+        this.contentManager = contentManager;
     }
 
     @GetMapping(value = "articles", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<List<Article>> getArticles() {
-        return new ResponseEntity<>(articleManager.getAllArticles(), HttpStatus.OK);
+    public ResponseEntity<List<Content>> getArticles() {
+        return new ResponseEntity<>(contentManager.getAllContent(), HttpStatus.OK);
     }
 
     @GetMapping(value = "tags", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<Tag>> getTags() {
-        return new ResponseEntity<>(articleManager.getAllTags(), HttpStatus.OK);
+        return new ResponseEntity<>(contentManager.getAllTags(), HttpStatus.OK);
     }
 }

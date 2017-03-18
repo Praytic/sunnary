@@ -1,12 +1,13 @@
 package net.sunnary.sunnary.dto;
 
+import net.sunnary.sunnary.model.Content;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-public class ArticleSubmissionForm {
+public class ContentSubmissionForm {
     @NotNull
     @Size(min = 10, max = 80)
     private String name;
@@ -18,6 +19,9 @@ public class ArticleSubmissionForm {
     @NotNull
     @Size(min = 1, max = 10)
     private List<String> tags;
+
+    @NotNull
+    private Content.Type type;
 
     public String getName() {
         return name;
@@ -41,5 +45,13 @@ public class ArticleSubmissionForm {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public Content.Type getType() {
+        return type;
+    }
+
+    public void setType(Content.Type type) {
+        this.type = type;
     }
 }
