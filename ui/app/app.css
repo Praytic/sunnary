@@ -1,3 +1,7 @@
+* {
+    box-shadow: none !important;
+}
+
 a {
     color: black;
 }
@@ -21,9 +25,10 @@ body {
     margin-bottom: 20px;
 }
 
+
 .btn-default {
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
 .btn-default:hover {
@@ -31,34 +36,28 @@ body {
     border: 1px solid black;
 }
 
-#tags_value {
-    background-color: transparent;
-    border: 1px solid black;
-}
-
-#tags_value:focus {
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: none !important;
-}
-
 #tags_dropdown {
     background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
-.angucomplete-selected-row {
+.tt-suggestion:hover {
     font-weight: bold;
     background-color: transparent !important;
     color: black !important;
 }
 
-.angucomplete-row {
+.tt-suggestion {
     word-wrap: break-word;
 }
 
-.angucomplete-dropdown {
-    margin-top: 6px !important;
+.tt-menu {
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+    min-width: 240px;
+    max-width: 240px;
     margin-left: -160px;
+    border: 1px solid black;
 }
 
 .card {
@@ -76,4 +75,22 @@ body {
     margin: 3px;
     font-size: 14px;
     border: 1px solid darkgrey;
+}
+
+#my-tag-list {
+    height: 32px;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid grey;
+}
+
+.tags-input.focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+}
+
+.tags-input {
+    background-color: transparent;
+    border: 0;
+    height: 32px;
 }

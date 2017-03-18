@@ -18,8 +18,7 @@ angular.module('myApp.main', [
       function ($scope) {
         $scope.isCollapsed = false;
         $scope.contents = [];
-        $scope.tags = [];
-        $scope.selectedTags = [];
+
         $scope.add = function () {
 
         };
@@ -29,7 +28,4 @@ angular.module('myApp.main', [
             $scope.$apply();
           })
         };
-        $.getJSON('http://sunnary.net/api/get/tags', function (data) {
-          $scope.tags = data;
-        });
       }]);

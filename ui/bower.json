@@ -10,12 +10,10 @@
     "angular-loader": "~1.5.0",
     "angular-mocks": "~1.5.0",
     "angular-animate": "~1.5.0",
-    "angular-advanced-searchbox": "3.0.0",
-    "pure-angular-advanced-searchbox": "1.1.77",
     "html5-boilerplate": "^5.3.0",
-    "angucomplete-alt": "^3.0.0",
     "typeahead.js": "^0.11.1",
-    "bootstrap-tagsinput": "0.8.0"
+    "bootstrap-tagsinput": "0.8.0",
+    "bootstrap-tags": "^1.1.6"
   },
   "authors": [
     "vchernogorov <vchernogorov@griddynamics.com>",

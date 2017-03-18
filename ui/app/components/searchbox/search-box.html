@@ -1,31 +1,12 @@
 <div class="row fat">
-    <input class="col-md-6 col-md-offset-2" type="text" value="Amsterdam,Washington" data-role="tagsinput" />
-    <script>
-        var citynames = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: 'assets/citynames.json',
-                filter: function(list) {
-                    return $.map(list, function(cityname) {
-                        return { name: cityname }; });
-                }
-            }
-        });
-        citynames.initialize();
-
-        $('input').tagsinput({
-            typeaheadjs: {
-                name: 'citynames',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: citynames.ttAdapter()
-            }
-        });
-    </script>
-    <div class="col-md-2" style="padding: 0">
-        <button type="button" class="btn btn-default" ng-click="search();">Search</button>
+    <div class="col-md-7 col-md-offset-2">
+        <div class="input-group">
+            <div id="my-tag-list" class="tag-list"></div>
+            <a class="btn btn-default input-group-addon" ng-click="search();" style="border-left: 0">Search</a>
+        </div>
+    </div>
+    <div class="col-md-1" style="padding: 0">
         <span>or</span>
-        <button type="button" class="btn btn-default" ng-click="add();">Add Link</button>
+        <button type="button" class="btn btn-default" ng-click="add();" style="margin-left: 10px; height: 32px">Add</button>
     </div>
 </div>
