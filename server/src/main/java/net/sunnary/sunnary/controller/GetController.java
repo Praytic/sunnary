@@ -28,7 +28,7 @@ public class GetController {
         this.contentManager = contentManager;
     }
 
-    @GetMapping(value = "articles", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "content", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<Content>> getArticles() {
         return new ResponseEntity<>(contentManager.getAllContent(), HttpStatus.OK);

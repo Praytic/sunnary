@@ -36,6 +36,7 @@ public class Content {
     private Date submissionDate;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     public Content() {
