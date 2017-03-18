@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -38,6 +39,7 @@ public class ArticleManager {
             }
 
             article.getTags().add(tag);
+            article.setSubmissionDate(new Date());
         }
 
         articleRepository.save(article);

@@ -11,10 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 public class TestDataCreator {
@@ -53,14 +50,12 @@ public class TestDataCreator {
                 "Apple", "Pear", "Crap", "Black", "White",
                 "Green", "Purple", "Developing", "Testing", "Debugging",
                 "Applying", "Dying", "Code", "Program", "Java", "Maven",
-                "Ticket", "Deadlock", "Apache", "Tomcat", "Fuck", "Shit",
-                "Cunt", "Faggot", "Nigger", "Fucker", "Dumbfuck", "Piss",
-                "Fucking", "Pissing", "Sucking", "Cock", "Dick", "Weiner",
-                "Penis", "Duck", "Goose", "Cow", "Sheep", "Cat", "Dog",
+                "Ticket", "Deadlock", "Apache", "Tomcat",
+                "Duck", "Goose", "Cow", "Sheep", "Cat", "Dog",
                 "Bird", "Parrot", "Bull", "Male", "Female"
         ));
 
-        for (int i=0; i<40; i++) {
+        for (int i=0; i<10; i++) {
             Article article = new Article();
 
             int numSteps = random.nextInt(3) + 2;
@@ -80,6 +75,7 @@ public class TestDataCreator {
 
             article.setName(name);
             article.setTargetUrl("http://google.com");
+            article.setSubmissionDate(new Date());
             articleRepository.save(article);
             log.info("Adding article " + article.getName() + " with tags " + article.getTags().toString());
         }

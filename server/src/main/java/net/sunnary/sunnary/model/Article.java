@@ -5,6 +5,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,8 @@ public class Article {
     private Set<Tag> tags = new HashSet<>();
 
     private String name;
+
+    private Date submissionDate;
 
     public Article() {
     }
@@ -81,5 +84,13 @@ public class Article {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getSubmissionDate() {
+        return submissionDate;
+    }
+
+    public void setSubmissionDate(Date submissionDate) {
+        this.submissionDate = submissionDate;
     }
 }
