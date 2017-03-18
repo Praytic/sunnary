@@ -1,5 +1,7 @@
 package net.sunnary.sunnary.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -10,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

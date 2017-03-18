@@ -2,6 +2,7 @@ package net.sunnary.sunnary.manager;
 
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import net.sunnary.sunnary.exceptions.NoContentException;
+import net.sunnary.sunnary.exceptions.NoTagException;
 import net.sunnary.sunnary.model.Content;
 import net.sunnary.sunnary.model.Tag;
 import net.sunnary.sunnary.repository.ContentRepository;
@@ -55,6 +56,16 @@ public class ContentManager {
         }
 
         return content;
+    }
+
+    public Tag getTag(String name) throws NoTagException {
+        Tag tag = tagRepository.getOne(name);
+
+        if (tag == null) {
+            throw new NoTagException();
+        }
+
+        return tag;
     }
 
     @Transactional
