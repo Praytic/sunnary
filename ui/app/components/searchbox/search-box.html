@@ -1,16 +1,28 @@
 <div class="row fat">
-    <div class="col-md-6 col-md-offset-2">
-        <angucomplete-alt id="tags"
-                          placeholder="Search tags"
-                          pause="100"
-                          selected-object="selectedTags"
-                          local-data="tags"
-                          search-fields="id"
-                          title-field="id"
-                          minlength="1"
-                          input-class="form-control form-control-small">
-        </angucomplete-alt>
-    </div>
+    <input class="col-md-6 col-md-offset-2" type="text" value="Amsterdam,Washington" data-role="tagsinput" />
+    <script>
+        var citynames = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: 'assets/citynames.json',
+                filter: function(list) {
+                    return $.map(list, function(cityname) {
+                        return { name: cityname }; });
+                }
+            }
+        });
+        citynames.initialize();
+
+        $('input').tagsinput({
+            typeaheadjs: {
+                name: 'citynames',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: citynames.ttAdapter()
+            }
+        });
+    </script>
     <div class="col-md-2" style="padding: 0">
         <button type="button" class="btn btn-default" ng-click="search();">Search</button>
         <span>or</span>

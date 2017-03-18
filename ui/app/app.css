@@ -58,6 +58,7 @@ body {
 
 .angucomplete-dropdown {
     margin-top: 6px !important;
+    margin-left: -160px;
 }
 
 .card {
