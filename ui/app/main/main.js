@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('myApp.main', ['ngRoute', 'myApp.mySearchbox'])
+angular.module('myApp.main', [
+  'ngRoute',
+  'ngAnimate',
+  'ui.bootstrap',
+  'myApp.mySearchbox',
+  'myApp.searchResults'])
 
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider.when('/', {
@@ -11,7 +16,17 @@ angular.module('myApp.main', ['ngRoute', 'myApp.mySearchbox'])
 
     .controller('MainPageCtrl', ['$scope',
       function ($scope) {
+        $scope.isCollapsed = false;
+        $scope.contents = [];
         $scope.tags = [];
+        $scope.add = function () {
+
+        };
+        $scope.search = function () {
+          $.getJSON('http://sunnary.net/api/get/articles', function (data) {
+            $scope.contents = data;
+          })
+        };
         $.getJSON('http://sunnary.net/api/get/tags', function (data) {
           $scope.tags = data;
         });
