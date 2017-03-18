@@ -5,8 +5,16 @@ public class ErrorMessage {
     private String message;
 
     public ErrorMessage(Type type) {
-        if (type == Type.INTERNAL_ERROR) {
-            this.message = "An internal error has occured.";
+        switch (type) {
+            case INTERNAL_ERROR:
+                this.message = "An internal error has occured.";
+                break;
+            case NO_SUCH_ARTICLE:
+                this.message = "No such article exists.";
+                break;
+            case MALFORMED_REQUEST:
+                this.message = "Request malformed.";
+                break;
         }
 
         this.type = type;
@@ -20,6 +28,7 @@ public class ErrorMessage {
 
     public enum Type {
         MALFORMED_REQUEST,
+        NO_SUCH_ARTICLE,
         INTERNAL_ERROR
     }
 
