@@ -24,7 +24,7 @@ public class Content {
     @Column(nullable = false)
     private long viewCounter;
 
-    @JoinTable(name = "article_tags")
+    @JoinTable
     @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();

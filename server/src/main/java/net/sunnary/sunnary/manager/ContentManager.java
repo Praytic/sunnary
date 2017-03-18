@@ -57,14 +57,17 @@ public class ContentManager {
         return content;
     }
 
+    @Transactional
     public void upvoteContent(long contentId) throws NoContentException {
         getContent(contentId).upvote();
     }
 
+    @Transactional
     public void downvoteContent(long contentId) throws NoContentException {
         getContent(contentId).downvote();
     }
 
+    @Transactional
     public void viewContent(long contentId) throws NoContentException {
         getContent(contentId).view();
     }
