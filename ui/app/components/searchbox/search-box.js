@@ -2,19 +2,24 @@
 
 angular.module('myApp.mySearchbox', [])
 
-    .directive('mySearchBox', function () {
+    .directive('mySearchBox', ['$http',
+      function ($http) {
         return {
           restrict: 'A',
           templateUrl: 'components/searchbox/search-box.html',
-          link: function (scope, elem, attrs){
-            $.getJSON('http://sunnary.net/api/get/tags', function (data) {
-              var tags = $.map(data, function (n) {
+          link: function (scope, elem, attrs) {
+            var successCallback = function (response) {
+              var tags = $.map(response.data, function (n) {
                 return n.id;
               });
-              $('#my-tag-list').tags({
-                suggestions: tags
-              });
-            });
+              scope.currentTags = $('#my-tag-list').tags({
+                suggestions: tags,
+                caseInsensitive: true
+              }).getTags();
+            };
+            var errorCallback = function (response) {
+            };
+            $http.get('http://sunnary.net/api/get/tags').then(successCallback, errorCallback);
           }
         };
-      });
+      }]);

@@ -14,18 +14,20 @@ angular.module('myApp.main', [
       });
     }])
 
-    .controller('MainPageCtrl', ['$scope',
-      function ($scope) {
-        $scope.isCollapsed = false;
+    .controller('MainPageCtrl', ['$scope', '$http',
+      function ($scope, $http) {
         $scope.contents = [];
-
         $scope.add = function () {
-
         };
-        $scope.search = function () {
-          $.getJSON('http://sunnary.net/api/get/articles', function (data) {
-            $scope.contents = data;
+        $scope.search = function (currentTags) {
+          var successCallback = function (response) {
+            $scope.contents = response.data;
             $scope.$apply();
-          })
+          };
+          var errorCallback = function (response) {
+            $scope.contents = [];
+            $scope.$apply();
+          };
+          $http.post('http://sunnary.net/api/search', currentTags).then(successCallback, errorCallback);
         };
       }]);
