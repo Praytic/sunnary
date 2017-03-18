@@ -19,12 +19,14 @@ angular.module('myApp.main', [
         $scope.isCollapsed = false;
         $scope.contents = [];
         $scope.tags = [];
+        $scope.selectedTags = [];
         $scope.add = function () {
 
         };
         $scope.search = function () {
           $.getJSON('http://sunnary.net/api/get/articles', function (data) {
             $scope.contents = data;
+            $scope.$apply();
           })
         };
         $.getJSON('http://sunnary.net/api/get/tags', function (data) {

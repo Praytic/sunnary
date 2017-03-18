@@ -1,3 +1,12 @@
+a {
+    color: black;
+}
+
+a:focus, a:hover {
+    color: darkred;
+    text-decoration: none;
+}
+
 body {
     background: url(https://drive.google.com/uc?export=view&id=0B7OeiBjEyQwPRmxwSmh4NkdZM2M) repeat;
 }
@@ -43,6 +52,27 @@ body {
     color: black !important;
 }
 
+.angucomplete-row {
+    word-wrap: break-word;
+}
+
 .angucomplete-dropdown {
     margin-top: 6px !important;
+}
+
+.card {
+    border-radius: 4px;
+    border: 1px solid black;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 8px;
+}
+
+.label-default {
+    background-color: rgba(255, 223, 139, 0.9);
+    color: black;
+    font-weight: normal;
+    margin: 3px;
+    font-size: 14px;
+    border: 1px solid darkgrey;
 }
