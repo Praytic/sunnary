@@ -53,10 +53,12 @@ public class TestDataCreator {
                 "Apple", "Pear", "Crap", "Black", "White",
                 "Green", "Purple", "Developing", "Testing", "Debugging",
                 "Applying", "Dying", "Code", "Program", "Java", "Maven",
-                "Ticket", "Deadlock", "Apache", "Tomcat"
+                "Ticket", "Deadlock", "Apache", "Tomcat", "Fuck", "Shit",
+                "Cunt", "Faggot", "Nigger", "Fucker", "Dumbfuck", "Piss",
+                "Fucking", "Pissing", "Sucking", "Cock", "Dick", "Weiner",
+                "Penis", "Duck", "Goose", "Cow", "Sheep", "Cat", "Dog",
+                "Bird", "Parrot", "Bull", "Male", "Female"
         ));
-
-        List<Article> articles = new ArrayList<>();
 
         for (int i=0; i<40; i++) {
             Article article = new Article();
@@ -71,17 +73,15 @@ public class TestDataCreator {
             for (int j=0; j<numWords; j++) {
                 name += wordPool.get(random.nextInt(wordPool.size()));
 
-                if (j != numSteps - 1) {
+                if (j != numWords - 1) {
                     name += " ";
                 }
             }
 
             article.setName(name);
             article.setTargetUrl("http://google.com");
-            articles.add(article);
+            articleRepository.save(article);
             log.info("Adding article " + article.getName() + " with tags " + article.getTags().toString());
         }
-
-        articleRepository.save(articles);
     }
 }

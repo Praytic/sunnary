@@ -1,6 +1,8 @@
 package net.sunnary.sunnary.model;
 
 import net.sunnary.sunnary.dto.ArticleSubmissionForm;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,6 +21,7 @@ public class Article {
     private long viewCounter;
 
     @JoinTable(name = "article_tags")
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();
 

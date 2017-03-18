@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-    @Query("SELECT a FROM Article a JOIN FETCH a.tags")
+    @Query("SELECT a FROM Article a FETCH ALL PROPERTIES")
     List<Article> findAllFetchEager();
 }
