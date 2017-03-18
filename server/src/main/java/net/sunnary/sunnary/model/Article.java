@@ -1,7 +1,9 @@
 package net.sunnary.sunnary.model;
 
+import net.sunnary.sunnary.dto.ArticleSubmissionForm;
+
 import javax.persistence.*;
-import java.net.URL;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,7 +12,7 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private URL targetUrl;
+    private String targetUrl;
 
     private long likeCounter;
 
@@ -18,9 +20,17 @@ public class Article {
 
     @JoinTable(name = "article_tags")
     @ManyToMany
-    private Set<Tag> tags;
+    private Set<Tag> tags = new HashSet<>();
 
     private String name;
+
+    public Article() {
+    }
+
+    public Article(ArticleSubmissionForm dto) {
+        this.targetUrl = dto.getTargetUrl();
+        this.name = dto.getName();
+    }
 
     public long getId() {
         return id;
@@ -30,11 +40,11 @@ public class Article {
         this.id = id;
     }
 
-    public URL getTargetUrl() {
+    public String getTargetUrl() {
         return targetUrl;
     }
 
-    public void setTargetUrl(URL targetUrl) {
+    public void setTargetUrl(String targetUrl) {
         this.targetUrl = targetUrl;
     }
 
