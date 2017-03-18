@@ -7,12 +7,42 @@ body {
     margin: 0 auto;
 }
 
-.main-page.container {
+.fat {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-div.paasb-searchbox {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.btn-default {
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+.btn-default:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+}
+
+#tags_value {
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+#tags_value:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: none !important;
+}
+
+#tags_dropdown {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+}
+
+.angucomplete-selected-row {
+    font-weight: bold;
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.angucomplete-dropdown {
+    margin-top: 6px !important;
 }

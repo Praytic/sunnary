@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.mySearchbox', ['paasb'])
+angular.module('myApp.mySearchbox', ['paasb', 'angucomplete-alt'])
 
 .directive('mySearchBox', function() {
   return {

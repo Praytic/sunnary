@@ -1,14 +1,19 @@
-<div class="row">
-    <paasb-search-box
-            class="col-md-offset-2 col-sm-8"
-            search-params="sOptions"
-            paasb-search-box-filtering="sFilters"
-            paasb-search-box-enable-filtering-operators="true"
-            paasb-search-box-config="sConfig"
-            paasb-search-box-auto-complete="sConfig"
-            paasb-search-box-cache-filter="true"
-            paasb-search-box-filter-selectors="sFilterSelectors"
-            paasb-search-box-filter-operators="sFilterOperators"
-            placeholder="Enter your query here...">
-    </paasb-search-box>
+<div class="row fat">
+    <div class="col-md-6 col-md-offset-2">
+        <angucomplete-alt id="tags"
+                          placeholder="Search tags"
+                          pause="100"
+                          selected-object="selectedTag"
+                          local-data="tags"
+                          search-fields="id"
+                          title-field="id"
+                          minlength="1"
+                          input-class="form-control form-control-small">
+        </angucomplete-alt>
+    </div>
+    <div class="col-md-2" style="padding: 0">
+        <button type="button" class="btn btn-default">Search</button>
+        <span>or</span>
+        <button type="button" class="btn btn-default">Add Link</button>
+    </div>
 </div>
