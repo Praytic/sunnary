@@ -28,6 +28,6 @@ angular.module('myApp.main', [
             $scope.contents = [];
             $scope.$apply();
           };
-          $http.post('http://sunnary.net/api/search', currentTags).then(successCallback, errorCallback);
+          $http.get('http://localhost:8888/api/get/content').then(successCallback, errorCallback);
         };
       }]);

@@ -19,7 +19,7 @@ angular.module('myApp.mySearchbox', [])
             };
             var errorCallback = function (response) {
             };
-            $http.get('http://sunnary.net/api/get/tags').then(successCallback, errorCallback);
+            $http.get('http://localhost:8888/api/get/tags').then(successCallback, errorCallback);
           }
         };
       }]);
