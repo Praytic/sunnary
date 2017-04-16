@@ -18,15 +18,14 @@ angular.module('myApp.main', [
       function ($scope, $http) {
         $scope.contents = [];
         $scope.add = function () {
+          // TODO
         };
         $scope.search = function (currentTags) {
           var successCallback = function (response) {
             $scope.contents = response.data;
-            $scope.$apply();
           };
           var errorCallback = function (response) {
             $scope.contents = [];
-            $scope.$apply();
           };
           $http.get('http://localhost:8888/api/get/content').then(successCallback, errorCallback);
         };

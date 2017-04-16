@@ -41,23 +41,24 @@ body {
     border: 1px solid grey;
 }
 
-.tt-suggestion:hover {
+li.tags-suggestion.tags-suggestion-highlighted {
     font-weight: bold;
-    background-color: transparent !important;
     color: black !important;
+    background: transparent none !important;
+    cursor: pointer;
 }
 
-.tt-suggestion {
+li.tags-suggestion {
     word-wrap: break-word;
 }
 
-.tt-menu {
-    background-color: rgba(255, 255, 255, 0.3);
-    margin-top: 20px;
+ul.tags-suggestion-list.dropdown-menu {
+    background: rgba(255, 255, 255, 0.3) url(https://drive.google.com/uc?export=view&id=0B7OeiBjEyQwPRmxwSmh4NkdZM2M) repeat;
+    margin-top: 10px !important;
     min-width: 240px;
     max-width: 240px;
-    margin-left: -160px;
     border: 1px solid black;
+    z-index: 3;
 }
 
 .card {
@@ -78,10 +79,12 @@ body {
 }
 
 #my-tag-list {
-    height: 32px;
+    height: 40px;
     width: 100%;
     background-color: transparent;
     border: 1px solid grey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .tags-input.focus {
@@ -93,4 +96,36 @@ body {
     background-color: transparent;
     border: 0;
     height: 32px;
+}
+
+.highlighted-30 {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid black;
+}
+
+.highlighted-60 {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid black;
+}
+
+.highlighted-90 {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+}
+
+.bootstrap-tags .tag.md {
+    background-color: rgba(255, 223, 139, 0.9);
+    color: black;
+    font-weight: normal;
+    border: 1px solid grey;
+    margin: 4px;
+    font-size: 15px !important;
+}
+
+.bootstrap-tags .tag.md .remove {
+    color: black;
+}
+
+.input-group .form-control {
+    height: 38px !important;
 }
