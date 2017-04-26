@@ -1,5 +1,6 @@
 package net.sunnary.sunnary.manager;
 
+import net.sunnary.sunnary.controller.exceptions.ContentCreationException;
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import net.sunnary.sunnary.exceptions.NoContentException;
 import net.sunnary.sunnary.exceptions.NoTagException;
@@ -28,22 +29,31 @@ public class ContentManager {
     }
 
     @Transactional
-    public void insertContentFromForm(ContentSubmissionForm form) {
+    public void insertContentFromForm(ContentSubmissionForm form) throws ContentCreationException {
         Content content = new Content(form);
 
         for (String tagString : form.getTags()) {
             Tag tag = tagRepository.findOne(tagString);
-
             if (tag == null) {
                 tag = new Tag();
                 tag.setId(tagString);
                 tagRepository.save(tag);
             }
-
             content.getTags().add(tag);
-            content.setSubmissionDate(new Date());
-            content.setType(form.getType());
         }
+
+        for (Long contentId : form.getContentIds()) {
+            try {
+                Content includedContent = getContent(contentId);
+                content.getIncludedContents().add(includedContent);
+            }
+            catch (NoContentException e) {
+                throw new ContentCreationException();
+            }
+        }
+
+        content.setSubmissionDate(new Date());
+        content.setType(form.getType());
 
         contentRepository.save(content);
     }
@@ -52,7 +62,7 @@ public class ContentManager {
         Content content = contentRepository.getOne(id);
 
         if (content == null) {
-            throw new NoContentException();
+            throw new NoContentException(id);
         }
 
         return content;
@@ -62,7 +72,7 @@ public class ContentManager {
         Tag tag = tagRepository.getOne(name);
 
         if (tag == null) {
-            throw new NoTagException();
+            throw new NoTagException(name);
         }
 
         return tag;

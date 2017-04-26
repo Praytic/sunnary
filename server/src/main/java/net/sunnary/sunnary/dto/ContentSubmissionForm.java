@@ -1,7 +1,6 @@
 package net.sunnary.sunnary.dto;
 
 import net.sunnary.sunnary.model.Content;
-import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,19 +8,27 @@ import java.util.List;
 
 public class ContentSubmissionForm {
     @NotNull
-    @Size(min = 10, max = 80)
+    @Size(max = 255)
     private String name;
 
-    @NotNull
-    @URL
+    private List<Long> contentIds;
+
     private String targetUrl;
 
     @NotNull
-    @Size(min = 1, max = 10)
+    @Size(max = 5)
     private List<String> tags;
 
     @NotNull
     private Content.Type type;
+
+    public List<Long> getContentIds() {
+        return contentIds;
+    }
+
+    public void setContentIds(List<Long> contentIds) {
+        this.contentIds = contentIds;
+    }
 
     public String getName() {
         return name;

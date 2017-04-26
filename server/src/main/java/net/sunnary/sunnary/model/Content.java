@@ -1,6 +1,5 @@
 package net.sunnary.sunnary.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import org.hibernate.annotations.Fetch;
@@ -32,6 +31,10 @@ public class Content {
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();
 
+    @JoinTable
+    @ManyToMany
+    private Set<Content> includedContents = new HashSet<>();
+
     @Column(nullable = false)
     private String name;
 
@@ -62,9 +65,18 @@ public class Content {
         setViewCounter(getViewCounter() + 1);
     }
 
+    public Set<Content> getIncludedContents() {
+        return includedContents;
+    }
+
+    public void setIncludedContents(Set<Content> includedContents) {
+        this.includedContents = includedContents;
+    }
+
     public enum Type {
         ARTICLE,
-        TOOL
+        TOOL,
+        PACK
     }
 
     public long getId() {
