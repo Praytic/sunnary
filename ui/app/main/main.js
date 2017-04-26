@@ -27,6 +27,6 @@ angular.module('myApp.main', [
           var errorCallback = function (response) {
             $scope.contents = [];
           };
-          $http.get('http://localhost:8888/api/get/content').then(successCallback, errorCallback);
+          $http.post('http://localhost:8888/api/search', currentTags).then(successCallback, errorCallback);
         };
       }]);
