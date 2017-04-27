@@ -8,19 +8,22 @@ angular.module('myApp.mySearchbox', [])
           restrict: 'A',
           templateUrl: 'components/searchbox/search-box.html',
           link: function (scope, elem, attrs) {
-            var successCallback = function (response) {
-              var tags = $.map(response.data, function (n) {
-                return n.id;
-              });
-              scope.currentTags = $('#my-tag-list').tags({
-                suggestions: tags,
-                caseInsensitive: true
-              }).getTags();
+            var tags = new Bloodhound({
+              datumTokenizer: Bloodhound.tokenizers.whitespace,
+              queryTokenizer: Bloodhound.tokenizers.whitespace,
+              remote: {
+                url: 'http://localhost:8888/api/get/tags'
+              }
+            });
+
+            $('#search-box-panel').find('input').typeahead(null, {
+              name: 'tags',
+              display: 'id',
+              source: tags
+            });
+            scope.getTags = function() {
+              return $('#tags-input').tagsinput('items');
             };
-            var errorCallback = function (response) {
-            };
-            $http.get('http://localhost:8888/api/get/tags').then(successCallback, errorCallback);
-            scope.getTags = function() { return 'java' };
           }
         };
       }]);
