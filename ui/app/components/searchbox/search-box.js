@@ -20,6 +20,7 @@ angular.module('myApp.mySearchbox', [])
             var errorCallback = function (response) {
             };
             $http.get('http://localhost:8888/api/get/tags').then(successCallback, errorCallback);
+            scope.getTags = function() { return 'java' };
           }
         };
       }]);

@@ -9,5 +9,12 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
-    $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider
+        .when('/search', {
+          template: "<div search-results></div>"
+        })
+        .when("/add", {
+          template: "<div id='add-content' add-content-card></div>"
+        })
+        .otherwise({redirectTo: '/'});
   }]);
