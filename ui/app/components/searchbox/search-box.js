@@ -1,29 +1,22 @@
 'use strict';
 
-angular.module('myApp.mySearchbox', [])
+angular.module('myApp.mySearchbox', ['ngTagsInput'])
 
-    .directive('mySearchBox', ['$http',
-      function ($http) {
-        return {
-          restrict: 'A',
-          templateUrl: 'components/searchbox/search-box.html',
-          link: function (scope, elem, attrs) {
-            var tags = new Bloodhound({
-              datumTokenizer: Bloodhound.tokenizers.whitespace,
-              queryTokenizer: Bloodhound.tokenizers.whitespace,
-              remote: {
-                url: 'http://localhost:8888/api/get/tags'
-              }
-            });
+    .controller('MySearchboxCtrl', ['$scope', '$http', function($scope, $http) {
+      $scope.tags = [
+        { id: 'Tag1' },
+        { id: 'Tag2' },
+        { id: 'Tag3' }
+      ];
 
-            $('#search-box-panel').find('input').typeahead(null, {
-              name: 'tags',
-              display: 'id',
-              source: tags
-            });
-            scope.getTags = function() {
-              return $('#tags-input').tagsinput('items');
-            };
-          }
-        };
-      }]);
+      $scope.loadTags = function(query) {
+        return $http.get('http://localhost:8888/api/get/tags');
+      };
+    }])
+
+    .directive('mySearchBox', function () {
+      return {
+        restrict: 'A',
+        templateUrl: 'components/searchbox/search-box.html'
+      };
+    });
