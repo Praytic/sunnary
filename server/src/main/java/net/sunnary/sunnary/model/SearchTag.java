@@ -2,11 +2,16 @@ package net.sunnary.sunnary.model;
 
 public class SearchTag {
     private Tag tag;
-    private boolean shouldExclude;
+    private boolean exclude;
 
-    public SearchTag(Tag tag, boolean shouldExclude) {
+    public SearchTag(Tag tag) {
         this.tag = tag;
-        this.shouldExclude = shouldExclude;
+        this.exclude = false;
+    }
+
+    public SearchTag(Tag tag, boolean exclude) {
+        this.tag = tag;
+        this.exclude = exclude;
     }
 
     public Tag getTag() {
@@ -18,10 +23,10 @@ public class SearchTag {
     }
 
     public boolean shouldExclude() {
-        return shouldExclude;
+        return exclude;
     }
 
-    public void setShouldExclude(boolean shouldExclude) {
-        this.shouldExclude = shouldExclude;
+    public void shouldExclude(boolean exclude) {
+        this.exclude = exclude;
     }
 }

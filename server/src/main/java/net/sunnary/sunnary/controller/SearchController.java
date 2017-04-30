@@ -21,9 +21,9 @@ public class SearchController {
         this.searchManager = searchManager;
     }
 
-    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Content>> search(@RequestBody List<String> rawTags) {
-        return new ResponseEntity<>(searchManager.searchByTagsRaw(rawTags), HttpStatus.OK);
+        return new ResponseEntity<>(searchManager.searchByRawTags(rawTags), HttpStatus.OK);
     }
 }

@@ -18,7 +18,6 @@ public class ControllerExceptionHandler {
                 new ErrorMessage(exception.getType(), exception.getMessage()), exception.getStatus());
     }
 
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public ResponseEntity<ErrorMessage> handleValidationException(MethodArgumentNotValidException exception) {

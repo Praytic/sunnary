@@ -1,6 +1,5 @@
 package net.sunnary.sunnary.controller;
 
-import net.sunnary.sunnary.controller.exceptions.ContentCreationException;
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import net.sunnary.sunnary.manager.ContentManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class PostController {
 
     @PostMapping(path = "content", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Void> postArticle(@RequestBody @Valid ContentSubmissionForm form) throws ContentCreationException {
+    public ResponseEntity<Void> postArticle(@RequestBody @Valid ContentSubmissionForm form) {
         contentManager.insertContentFromForm(form);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

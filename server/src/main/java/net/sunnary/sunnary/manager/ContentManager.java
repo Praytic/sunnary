@@ -1,6 +1,5 @@
 package net.sunnary.sunnary.manager;
 
-import net.sunnary.sunnary.controller.exceptions.ContentCreationException;
 import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import net.sunnary.sunnary.exceptions.NoContentException;
 import net.sunnary.sunnary.exceptions.NoTagException;
@@ -16,20 +15,21 @@ import java.util.Date;
 import java.util.List;
 
 @Component
+@Transactional(readOnly = true)
 public class ContentManager {
+
     private ContentRepository contentRepository;
 
     private TagRepository tagRepository;
 
     @Autowired
-    public ContentManager(ContentRepository contentRepository,
-                          TagRepository tagRepository) {
+    public ContentManager(ContentRepository contentRepository, TagRepository tagRepository) {
         this.contentRepository = contentRepository;
         this.tagRepository = tagRepository;
     }
 
     @Transactional
-    public void insertContentFromForm(ContentSubmissionForm form) throws ContentCreationException {
+    public void insertContentFromForm(ContentSubmissionForm form) {
         Content content = new Content(form);
 
         for (String tagString : form.getTags()) {
@@ -43,13 +43,8 @@ public class ContentManager {
         }
 
         for (Long contentId : form.getContentIds()) {
-            try {
-                Content includedContent = getContent(contentId);
-                content.getIncludedContents().add(includedContent);
-            }
-            catch (NoContentException e) {
-                throw new ContentCreationException();
-            }
+            Content includedContent = getContent(contentId);
+            content.getIncludedContents().add(includedContent);
         }
 
         content.setSubmissionDate(new Date());
@@ -58,7 +53,7 @@ public class ContentManager {
         contentRepository.save(content);
     }
 
-    public Content getContent(long id) throws NoContentException {
+    public Content getContent(long id) {
         Content content = contentRepository.getOne(id);
 
         if (content == null) {
@@ -68,7 +63,7 @@ public class ContentManager {
         return content;
     }
 
-    public Tag getTag(String name) throws NoTagException {
+    public Tag getTag(String name) {
         Tag tag = tagRepository.getOne(name);
 
         if (tag == null) {
@@ -79,17 +74,17 @@ public class ContentManager {
     }
 
     @Transactional
-    public void upvoteContent(long contentId) throws NoContentException {
+    public void upvoteContent(long contentId) {
         getContent(contentId).upvote();
     }
 
     @Transactional
-    public void downvoteContent(long contentId) throws NoContentException {
+    public void downvoteContent(long contentId) {
         getContent(contentId).downvote();
     }
 
     @Transactional
-    public void viewContent(long contentId) throws NoContentException {
+    public void viewContent(long contentId) {
         getContent(contentId).view();
     }
 
@@ -99,5 +94,9 @@ public class ContentManager {
 
     public List<Tag> getAllTags() {
         return tagRepository.findAll();
+    }
+
+    public List<Tag> getTagsByQuery(String query) {
+        return tagRepository.getByQuery(query);
     }
 }
