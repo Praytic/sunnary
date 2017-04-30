@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/tags")
@@ -26,7 +25,7 @@ public class TagsController {
 
     @ResponseBody
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, params = { "q" })
-    public List<Tag> getTags(@RequestParam(value = "q", required = false) Optional<String> query) {
-        return query.isPresent() ? contentManager.getTagsByQuery(query.get()) : contentManager.getAllTags();
+    public List<Tag> getTags(@RequestParam(value = "q", required = false) String query) {
+        return query != null ? contentManager.getTagsByQuery(query) : contentManager.getAllTags();
     }
 }
