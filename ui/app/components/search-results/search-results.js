@@ -21,10 +21,10 @@ angular.module('myApp.searchResults', [])
             var query = $location.search().q;
             var tags = query.split(',');
             var successCallback = function (response) {
-              $scope.contents = response.data;
+              $scope.$parent.contents = response.data;
             };
             var errorCallback = function (response) {
-              $scope.contents = [];
+              $scope.$parent.contents = [];
               console.log(response);
             };
             Content.search(tags).then(successCallback, errorCallback);

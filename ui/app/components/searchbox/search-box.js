@@ -24,6 +24,7 @@ angular.module('myApp.mySearchbox', ['ngTagsInput'])
     .directive('mySearchBox', function () {
       return {
         restrict: 'A',
-        templateUrl: 'components/searchbox/search-box.html'
+        templateUrl: 'components/searchbox/search-box.html',
+        controller: 'MySearchboxCtrl'
       };
     });

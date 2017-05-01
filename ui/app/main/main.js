@@ -20,10 +20,15 @@ angular.module('myApp.main', [
           .otherwise({redirectTo: '/'});
     }])
 
+    .controller('MainPageCtrl', ['$scope', function($scope) {
+      $scope.contents = [];
+    }])
+
     .directive('mainPage', function () {
       return {
         restrict: 'A',
-        templateUrl: 'main/main-page.html'
+        templateUrl: 'main/main-page.html',
+        controller: 'MainPageCtrl'
       };
     })
 
