@@ -64,7 +64,7 @@ public class ContentManager {
     }
 
     public Tag getTag(String name) {
-        Tag tag = tagRepository.getOne(name);
+        Tag tag = tagRepository.findOne(name);
 
         if (tag == null) {
             throw new NoTagException(name);

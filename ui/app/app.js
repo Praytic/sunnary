@@ -19,10 +19,20 @@ angular.module('myApp', [
     }])
 
     .factory('Tag', ['$http', function($http) {
-        return {
-          get: function(query) {
-            return $http.get('http://localhost:8888/api/tags?q=' + query);
-          }
+      return {
+        get: function() {
+          return $http.get('http://localhost:8888/api/tags');
+        },
+        getByQuery: function(query) {
+          return $http.get('http://localhost:8888/api/tags?q=' + query);
         }
       }
-    ]);
+    }])
+
+    .factory('Content', ['$http', function($http) {
+      return {
+        search: function(tags) {
+          return $http.post('http://localhost:8888/api/content/search', tags);
+        }
+      }
+    }]);

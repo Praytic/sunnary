@@ -29,4 +29,22 @@ public class SearchTag {
     public void shouldExclude(boolean exclude) {
         this.exclude = exclude;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SearchTag searchTag = (SearchTag) o;
+
+        if (exclude != searchTag.exclude) return false;
+        return tag != null ? tag.equals(searchTag.tag) : searchTag.tag == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = tag != null ? tag.hashCode() : 0;
+        result = 31 * result + (exclude ? 1 : 0);
+        return result;
+    }
 }

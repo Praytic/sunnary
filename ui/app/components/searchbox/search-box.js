@@ -12,7 +12,7 @@ angular.module('myApp.mySearchbox', ['ngTagsInput'])
       };
 
       $scope.loadTags = function(query) {
-        return Tag.get(query).then(function(response) {
+        return Tag.getByQuery(query).then(function(response) {
           var responseTags = response.data;
           return responseTags.filter(function(tag) {
             return tag.id.toLowerCase().indexOf(query.toLowerCase()) != -1;
