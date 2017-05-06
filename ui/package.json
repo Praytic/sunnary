@@ -1,8 +1,13 @@
 {
-  "name": "sunnary",
-  "private": true,
-  "version": "0.0.0",
-  "repository": "https://github.com/angular/angular-seed",
+  "name": "Sunnary",
+  "homepage": "http://sunnary.net/",
+  "version": "0.0.0-SNAPSHOT",
+  "repository": {
+    "type": "Git",
+    "url": "https://github.com/Praytic/sunnary"
+  },
+  "author": "Vladislav Chernogorov <chernogorovvm@gmail.com> (https://github.com/Praytic)",
+  "contributors": ["Timothy Sokolov (https://github.com/SamuelMoriarty)"],
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",

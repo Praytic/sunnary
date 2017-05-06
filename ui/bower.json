@@ -1,9 +1,14 @@
 {
-  "name": "sunnary",
-  "version": "0.0.0",
-  "homepage": "https://github.com/Praytic/sunnary",
+  "name": "Sunnary",
+  "homepage": "http://sunnary.net/",
+  "version": "0.0.0-SNAPSHOT",
+  "repository": {
+    "type": "Git",
+    "url": "https://github.com/Praytic/sunnary"
+  },
+  "author": "Vladislav Chernogorov <chernogorovvm@gmail.com> (https://github.com/Praytic)",
+  "contributors": ["Timothy Sokolov (https://github.com/SamuelMoriarty)"],
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "angular": "~1.5.0",
     "angular-route": "~1.5.0",
@@ -14,17 +19,5 @@
     "ng-tags-input": "3.2.0",
     "bootstrap": "v4.0.0-alpha.6",
     "angular-bootstrap": "^2.5.0"
-  },
-  "authors": [
-    "vchernogorov <vchernogorov@griddynamics.com>",
-    "tsokolov <tsokolov@griddynamics.com>"
-  ],
-  "description": "",
-  "main": "index.html",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "app/bower_components"
-  ]
+  }
 }

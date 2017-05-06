@@ -1,2 +1,3 @@
 - Logo pic is not working with uib-collapse
 - Do I need MainPageCtrl to create scope?
+- Fix current search form-group
