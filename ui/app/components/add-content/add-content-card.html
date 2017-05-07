@@ -1,12 +1,17 @@
 <div class="container">
-  <form>
+  <form ng-submit="addContent({
+    name: addContentCard.contentTitle,
+    targetUrl: addContentCard.contentLink,
+    type: type.name(currentType),
+    tags: queryArray(tags)
+  })">
     <div class="form-group">
       <label for="content-title">Title</label>
-      <input type="text" class="form-control" id="content-title" placeholder="Title">
+      <input type="text" class="form-control" id="content-title" placeholder="Title" ng-model="addContentCard.contentTitle">
     </div>
     <div class="form-group">
       <label for="content-link">Link to Source</label>
-      <input type="text" class="form-control" id="content-link" placeholder="http://example.com/">
+      <input type="text" class="form-control" id="content-link" placeholder="http://example.com/" ng-model="addContentCard.contentLink">
     </div>
     <div class="form-group">
       <label for="content-type">Choose type</label>
@@ -18,7 +23,10 @@
     </div>
     <div class="form-group">
       <label>Tags</label>
-      <div my-tags-input></div>
+      <div sunnary-tags-input></div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </div>

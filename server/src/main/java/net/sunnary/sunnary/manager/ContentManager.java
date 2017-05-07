@@ -42,9 +42,11 @@ public class ContentManager {
             content.getTags().add(tag);
         }
 
-        for (Long contentId : form.getContentIds()) {
-            Content includedContent = getContent(contentId);
-            content.getIncludedContents().add(includedContent);
+        if (form.getContentIds() != null) {
+            for (Long contentId : form.getContentIds()) {
+                Content includedContent = getContent(contentId);
+                content.getIncludedContents().add(includedContent);
+            }
         }
 
         content.setSubmissionDate(new Date());

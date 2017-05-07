@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.searchResults', [])
+angular.module('sunnaryApp.searchResults', [])
 
     .directive('searchResult', function () {
       return {

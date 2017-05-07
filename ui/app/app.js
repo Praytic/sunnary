@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myApp', ['myApp.main']);
+angular.module('sunnaryApp', ['sunnaryApp.main']);

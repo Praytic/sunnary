@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('myApp.main', [
+angular.module('sunnaryApp.main', [
   'ngRoute',
   'ngAnimate',
   'ui.bootstrap',
-  'myApp.mySearchbox',
-  'myApp.searchResults',
-  'myApp.addContentCard'])
+  'sunnaryApp.mySearchbox',
+  'sunnaryApp.searchResults',
+  'sunnaryApp.addContentCard'])
 
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
@@ -22,10 +22,13 @@ angular.module('myApp.main', [
 
     .controller('MainPageCtrl', ['$scope', 'Tag', function($scope, Tag) {
       $scope.contents = [];
-      $scope.query = function(tags) {
+      $scope.queryArray = function(tags) {
         return $.map(tags, function(tag) {
           return tag.id;
-        }).join();
+        });
+      };
+      $scope.query = function(tags) {
+        return $scope.queryArray(tags).join();
       };
       $scope.loadTags = function(query) {
         return Tag.getByQuery(query).then(function(response) {
@@ -60,6 +63,9 @@ angular.module('myApp.main', [
       return {
         search: function(tags) {
           return $http.post('http://localhost:8888/api/content/search', tags);
+        },
+        create: function(content) {
+          return $http.post('http://localhost:8888/api/content/create', content);
         }
       }
     }]);
