@@ -22,13 +22,13 @@ angular.module('sunnaryApp.main', [
 
     .controller('MainPageCtrl', ['$scope', 'Tag', function($scope, Tag) {
       $scope.contents = [];
-      $scope.queryArray = function(tags) {
+      $scope.asQueryArray = function(tags) {
         return $.map(tags, function(tag) {
           return tag.id;
         });
       };
-      $scope.query = function(tags) {
-        return $scope.queryArray(tags).join();
+      $scope.asQuery = function(tags) {
+        return $scope.asQueryArray(tags).join();
       };
       $scope.loadTags = function(query) {
         return Tag.getByQuery(query).then(function(response) {
