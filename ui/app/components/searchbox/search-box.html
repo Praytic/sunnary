@@ -1,17 +1,7 @@
 <div class="container">
     <div class="row input-group">
-        <tags-input class="col-10"
-                    ng-model="tags"
-                    display-property="id"
-                    key-property="id"
-                    add-on-paste="true">
-            <auto-complete source="loadTags($query)"
-                           min-length="0"
-                           load-on-focus="true"
-                           load-on-empty="true"
-                           max-results-to-show="15"></auto-complete>
-        </tags-input>
-        <a class="col-1 btn btn-default input-group-addon" href="#!/search?q={{query()}}" style="border-left: 0">Search</a>
+        <div class="col-10" my-tags-input></div>
+        <a class="col-1 btn btn-default input-group-addon" href="#!/search?q={{query(tags)}}" style="border-left: 0">Search</a>
         <a class="col-1 btn btn-default input-group-addon" href="#!/add" style="border-left: 0">Add</a>
     </div>
 </div>

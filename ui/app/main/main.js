@@ -15,16 +15,29 @@ angular.module('myApp.main', [
             template: "<div search-results></div>"
           })
           .when("/add", {
-            template: "<div id='add-content' add-content-card></div>"
+            template: "<div add-content-card></div>"
           })
           .otherwise({redirectTo: '/'});
     }])
 
-    .controller('MainPageCtrl', ['$scope', function($scope) {
+    .controller('MainPageCtrl', ['$scope', 'Tag', function($scope, Tag) {
       $scope.contents = [];
+      $scope.query = function(tags) {
+        return $.map(tags, function(tag) {
+          return tag.id;
+        }).join();
+      };
+      $scope.loadTags = function(query) {
+        return Tag.getByQuery(query).then(function(response) {
+          var responseTags = response.data;
+          return responseTags.filter(function(tag) {
+            return tag.id.toLowerCase().indexOf(query.toLowerCase()) != -1;
+          });
+        });
+      }
     }])
 
-    .directive('mainPage', function () {
+    .directive('mainPage', function() {
       return {
         restrict: 'A',
         templateUrl: 'main/main-page.html',

@@ -1,0 +1,12 @@
+<tags-input ng-model="tags"
+            min-length="1"
+            display-property="id"
+            key-property="id"
+            add-on-paste="true">
+  <auto-complete source="loadTags($query)"
+                 min-length="1"
+                 load-on-focus="true"
+                 load-on-empty="true"
+                 max-results-to-show="15">
+  </auto-complete>
+</tags-input>
