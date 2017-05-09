@@ -4,43 +4,42 @@ import net.sunnary.sunnary.dto.ContentSubmissionForm;
 import net.sunnary.sunnary.exceptions.NoContentException;
 import net.sunnary.sunnary.exceptions.NoTagException;
 import net.sunnary.sunnary.model.Content;
+import net.sunnary.sunnary.model.ContentDescription;
 import net.sunnary.sunnary.model.Tag;
+import net.sunnary.sunnary.repository.ContentDescriptionRepository;
 import net.sunnary.sunnary.repository.ContentRepository;
 import net.sunnary.sunnary.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Transactional(readOnly = true)
 public class ContentManager {
 
+    private ContentDescriptionRepository contentDescriptionRepository;
     private ContentRepository contentRepository;
-
     private TagRepository tagRepository;
 
     @Autowired
-    public ContentManager(ContentRepository contentRepository, TagRepository tagRepository) {
+    public ContentManager(ContentRepository contentRepository, TagRepository tagRepository,
+            ContentDescriptionRepository contentDescriptionRepository) {
         this.contentRepository = contentRepository;
         this.tagRepository = tagRepository;
+        this.contentDescriptionRepository = contentDescriptionRepository;
     }
 
     @Transactional
     public void insertContentFromForm(ContentSubmissionForm form) {
         Content content = new Content(form);
 
-        for (String tagString : form.getTags()) {
-            Tag tag = tagRepository.findOne(tagString);
-            if (tag == null) {
-                tag = new Tag();
-                tag.setId(tagString);
-                tagRepository.save(tag);
-            }
-            content.getTags().add(tag);
-        }
+        content.setTags(getTags(form.getTags(), true));
 
         if (form.getContentIds() != null) {
             for (Long contentId : form.getContentIds()) {
@@ -52,7 +51,27 @@ public class ContentManager {
         content.setSubmissionDate(new Date());
         content.setType(form.getType());
 
-        contentRepository.save(content);
+        content = contentRepository.save(content);
+
+        if (!StringUtils.isEmpty(form.getDescription())) {
+            ContentDescription description = new ContentDescription(content, form.getDescription());
+            contentDescriptionRepository.save(description);
+        }
+    }
+
+    @Transactional
+    public Set<Tag> getTags(List<String> rawTags, boolean createIfNotFound) {
+        Set<Tag> tags = new HashSet<>();
+        for (String tagString : rawTags) {
+            Tag tag = tagRepository.findOne(tagString);
+            if (tag == null && createIfNotFound) {
+                tag = new Tag();
+                tag.setId(tagString);
+                tagRepository.save(tag);
+                tags.add(tag);
+            }
+        }
+        return tags;
     }
 
     public Content getContent(long id) {

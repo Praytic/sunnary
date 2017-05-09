@@ -22,6 +22,17 @@ public class ContentSubmissionForm {
     @NotNull
     private Content.Type type;
 
+    @Size(max = 512)
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Long> getContentIds() {
         return contentIds;
     }

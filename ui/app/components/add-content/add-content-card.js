@@ -38,6 +38,14 @@ angular.module('sunnaryApp.addContentCard', ['sunnaryApp.sunnaryTagsInput'])
               if (!$scope.addContentCard.contentTitle) {
                 $scope.addContentCard.contentTitle = title;
               }
+              if (!$scope.addContentCard.contentDescription) {
+                $scope.addContentCard.contentDescription = description;
+              }
+              if (!$scope.tags.length < 0 && keywords) {
+                $scope.tags = $.map(keywords.split(','), function(tag) {
+                  return { id: tag };
+                });
+              }
             });
           }, true);
         }]

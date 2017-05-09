@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ContentRepository extends JpaRepository<Content, Long> {
+
     @Query("SELECT a FROM Content a FETCH ALL PROPERTIES")
     List<Content> findAllFetchEager();
 }

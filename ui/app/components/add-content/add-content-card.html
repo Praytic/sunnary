@@ -1,17 +1,22 @@
 <div class="container">
   <form ng-submit="addContent({
     name: addContentCard.contentTitle,
+    description: addContentCard.contentDescription,
     targetUrl: addContentCard.contentLink,
     type: type.name(currentType),
     tags: asQueryArray(tags)
   })">
     <div class="form-group">
+      <label for="content-link">Link to Source</label>
+      <input type="text" class="form-control" id="content-link" placeholder="http://example.com/" ng-model="addContentCard.contentLink">
+    </div>
+    <div class="form-group">
       <label for="content-title">Title</label>
       <input type="text" class="form-control" id="content-title" placeholder="Title" ng-model="addContentCard.contentTitle">
     </div>
     <div class="form-group">
-      <label for="content-link">Link to Source</label>
-      <input type="text" class="form-control" id="content-link" placeholder="http://example.com/" ng-model="addContentCard.contentLink">
+      <label for="content-description">Description</label>
+      <input type="text" class="form-control" id="content-description" placeholder="Description" ng-model="addContentCard.contentDescription">
     </div>
     <div class="form-group">
       <label for="content-type">Choose type</label>

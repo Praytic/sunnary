@@ -6,15 +6,16 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Content {
+public class Content implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
@@ -44,6 +45,9 @@ public class Content {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Type type;
+
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "content")
+    private ContentDescription description;
 
     public Content() {
     }
@@ -141,6 +145,14 @@ public class Content {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public ContentDescription getDescription() {
+        return description;
+    }
+
+    public void setDescription(ContentDescription description) {
+        this.description = description;
     }
 
     @Override
