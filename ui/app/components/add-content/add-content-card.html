@@ -1,7 +1,7 @@
 <div class="container">
   <form ng-submit="addContent({
     name: addContentCard.contentTitle,
-    description: addContentCard.contentDescription,
+    contentDescription: addContentCard.contentDescription,
     targetUrl: addContentCard.contentLink,
     type: type.name(currentType),
     tags: asQueryArray(tags)
@@ -15,8 +15,8 @@
       <input type="text" class="form-control" id="content-title" placeholder="Title" ng-model="addContentCard.contentTitle">
     </div>
     <div class="form-group">
-      <label for="content-description">Description</label>
-      <input type="text" class="form-control" id="content-description" placeholder="Description" ng-model="addContentCard.contentDescription">
+      <label for="content-contentDescription">Description</label>
+      <input type="text" class="form-control" id="content-contentDescription" placeholder="Description" ng-model="addContentCard.contentDescription">
     </div>
     <div class="form-group">
       <label for="content-type">Choose type</label>

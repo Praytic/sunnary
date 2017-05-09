@@ -3,11 +3,10 @@ package net.sunnary.sunnary.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class ContentDescription implements Serializable {
+public class ContentDescription {
 
     @Id
     @Column(name = "content_id")
@@ -17,7 +16,7 @@ public class ContentDescription implements Serializable {
     @PrimaryKeyJoinColumn(name = "content_id", referencedColumnName = "id")
     private Content content;
 
-    @Column
+    @Column(length = 512)
     private String description;
 
     public ContentDescription() {

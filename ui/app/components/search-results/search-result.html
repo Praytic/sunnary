@@ -2,20 +2,25 @@
   <div class="card-header">
     <h4>
       <a href="{{content.targetUrl}}">
-        <span ng-class="content.type == 'ARTICLE' ? 'fa fa-file-text-o' : 'glyphicon glyphicon-wrench'"></span> {{content.name}}
+        <i ng-class="content.type == 'ARTICLE' ? content.type == 'PACK' ? 'fa fa-th-large' : 'fa fa-align-left' : 'fa fa-wrench'"></i> {{content.name}}
       </a>
     </h4>
   </div>
   <div class="card-block">
     <div class="row">
-      <div class="col-md-7 btn-group" role="group">
-        <button class="btn btn-default" style="color: green">+{{content.likeCounter}}</button>
-        <a class="btn btn-default" href="{{content.targetUrl}}">
-          <span class="glyphicon glyphicon-eye-open"></span> {{content.viewCounter}}
-        </a>
+      <div class="container">
+        <p>{{content.description}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="btn-group" role="group">
+        <button class="btn btn-secondary" style="color: green">+{{content.likeCounter}}</button>
+        <button class="btn btn-secondary" href="{{content.targetUrl}}">
+          <span class="fa fa-eye" aria-hidden="true"></span> {{content.viewCounter}}
+        </button>
       </div>
       <div class="col-md-5 text-right">
-        <span class="badge badge-default" ng-repeat="tag in content.tags">{{tag.id}}</span>
+        <span class="badge badge-default" ng-repeat="tag in content.tags">{{tag}}</span>
       </div>
     </div>
   </div>

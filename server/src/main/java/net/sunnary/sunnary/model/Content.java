@@ -1,19 +1,18 @@
 package net.sunnary.sunnary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.sunnary.sunnary.dto.ContentSubmissionForm;
+import net.sunnary.sunnary.dto.ContentRequestDto;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Content implements Serializable {
+public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -47,12 +46,12 @@ public class Content implements Serializable {
     private Type type;
 
     @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "content")
-    private ContentDescription description;
+    private ContentDescription contentDescription;
 
     public Content() {
     }
 
-    public Content(ContentSubmissionForm dto) {
+    public Content(ContentRequestDto dto) {
         this.targetUrl = dto.getTargetUrl();
         this.name = dto.getName();
     }
@@ -147,12 +146,12 @@ public class Content implements Serializable {
         this.type = type;
     }
 
-    public ContentDescription getDescription() {
-        return description;
+    public ContentDescription getContentDescription() {
+        return contentDescription;
     }
 
-    public void setDescription(ContentDescription description) {
-        this.description = description;
+    public void setContentDescription(ContentDescription contentDescription) {
+        this.contentDescription = contentDescription;
     }
 
     @Override

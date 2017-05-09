@@ -1,6 +1,6 @@
 package net.sunnary.sunnary.manager;
 
-import net.sunnary.sunnary.dto.ContentSubmissionForm;
+import net.sunnary.sunnary.dto.ContentRequestDto;
 import net.sunnary.sunnary.exceptions.NoContentException;
 import net.sunnary.sunnary.exceptions.NoTagException;
 import net.sunnary.sunnary.model.Content;
@@ -36,7 +36,7 @@ public class ContentManager {
     }
 
     @Transactional
-    public void insertContentFromForm(ContentSubmissionForm form) {
+    public void insertContentFromForm(ContentRequestDto form) {
         Content content = new Content(form);
 
         content.setTags(getTags(form.getTags(), true));

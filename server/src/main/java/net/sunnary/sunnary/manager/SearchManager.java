@@ -41,10 +41,11 @@ public class SearchManager {
         Map<Boolean, List<SearchTag>> partitionedTags = searchTags.stream().collect(Collectors.partitioningBy(SearchTag::shouldExclude));
         List<Tag> excludedTags = partitionedTags.get(true).stream().map(SearchTag::getTag).collect(Collectors.toList());
         List<Tag> includedTags = partitionedTags.get(false).stream().map(SearchTag::getTag).collect(Collectors.toList());
-        return contentManager.getAllContent().stream()
+        List<Content> resultTags = contentManager.getAllContent().stream()
                 .filter(content -> !containsTags(content, excludedTags))
                 .filter(content -> containsTags(content, includedTags))
                 .collect(Collectors.toList());
+        return resultTags;
     }
 
     public List<Content> searchByRawTags(List<String> rawTags) {

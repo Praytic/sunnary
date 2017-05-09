@@ -1,10 +1,10 @@
 package net.sunnary.sunnary.dto;
 
-public class ErrorMessage {
+public class ErrorMessageDto {
     private Type type;
     private String message;
 
-    public ErrorMessage(Type type) {
+    public ErrorMessageDto(Type type) {
         switch (type) {
             case INTERNAL_ERROR:
                 this.message = "An internal error has occured.";
@@ -20,7 +20,7 @@ public class ErrorMessage {
         this.type = type;
     }
 
-    public ErrorMessage(Type type, String message) {
+    public ErrorMessageDto(Type type, String message) {
         this.type = type;
         this.message = message;
     }
@@ -32,4 +32,19 @@ public class ErrorMessage {
         INTERNAL_ERROR
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

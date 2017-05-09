@@ -1,19 +1,19 @@
 package net.sunnary.sunnary.controller.exceptions;
 
-import net.sunnary.sunnary.dto.ErrorMessage;
+import net.sunnary.sunnary.dto.ErrorMessageDto;
 import org.springframework.http.HttpStatus;
 
 public abstract class ControllerException extends Exception {
-    private ErrorMessage.Type type;
+    private ErrorMessageDto.Type type;
     private HttpStatus status;
 
-    public ControllerException(ErrorMessage.Type type, HttpStatus status, String message) {
+    public ControllerException(ErrorMessageDto.Type type, HttpStatus status, String message) {
         super(message);
         this.type = type;
         this.status = status;
     }
 
-    public final ErrorMessage.Type getType() {
+    public final ErrorMessageDto.Type getType() {
         return type;
     }
 
