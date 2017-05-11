@@ -2,8 +2,6 @@ package net.sunnary.sunnary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.sunnary.sunnary.dto.ContentRequestDto;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,7 +25,6 @@ public class Content {
     private long viewCounter;
 
     @JoinTable
-    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();
 

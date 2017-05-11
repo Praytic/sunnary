@@ -24,7 +24,7 @@ public class ContentResponseDto {
         this.targetUrl = content.getTargetUrl();
         this.tags = content.getTags().stream().map(Tag::getId).collect(Collectors.toSet());
         this.type = content.getType();
-        this.description = content.getContentDescription().getDescription();
+        this.description = content.getContentDescription() == null ? null : content.getContentDescription().getDescription();
         this.viewCounter = content.getViewCounter();
         this.likeCounter = content.getLikeCounter();
     }

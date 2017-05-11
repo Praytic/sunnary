@@ -68,8 +68,8 @@ public class ContentManager {
                 tag = new Tag();
                 tag.setId(tagString);
                 tagRepository.save(tag);
-                tags.add(tag);
             }
+            tags.add(tag);
         }
         return tags;
     }
