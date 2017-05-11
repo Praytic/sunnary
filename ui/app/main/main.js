@@ -24,11 +24,11 @@ angular.module('sunnaryApp.main', [
       $scope.contents = [];
       $scope.asQueryArray = function(tags) {
         return $.map(tags, function(tag) {
-          return tag.id;
+          return encodeURIComponent(tag.id);
         });
       };
       $scope.asQuery = function(tags) {
-        return $scope.asQueryArray(tags).join();
+        return encodeURIComponent($scope.asQueryArray(tags).join());
       };
       $scope.loadTags = function(query) {
         return Tag.getByQuery(query).then(function(response) {
