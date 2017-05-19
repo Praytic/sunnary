@@ -6,7 +6,8 @@ angular.module('sunnaryApp.main', [
   'ui.bootstrap',
   'sunnaryApp.mySearchbox',
   'sunnaryApp.searchResults',
-  'sunnaryApp.addContentCard'])
+  'sunnaryApp.addContentCard',
+  'sunnaryApp.constants'])
 
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
@@ -48,13 +49,13 @@ angular.module('sunnaryApp.main', [
       };
     })
 
-    .factory('Tag', ['$http', function($http) {
+    .factory('Tag', ['$http', 'serverApiUrl', function($http, serverApiUrl) {
       return {
         get: function() {
-          return $http.get('http://localhost:8888/api/tags');
+          return $http.get(serverApiUrl + '/tags');
         },
         getByQuery: function(query) {
-          return $http.get('http://localhost:8888/api/tags?q=' + query);
+          return $http.get(serverApiUrl + '/tags?q=' + query);
         }
       }
     }])
@@ -62,10 +63,10 @@ angular.module('sunnaryApp.main', [
     .factory('Content', ['$http', function($http) {
       return {
         search: function(tags) {
-          return $http.post('http://localhost:8888/api/content/search', tags);
+          return $http.post(serverApiUrl + '/content/search', tags);
         },
         create: function(content) {
-          return $http.post('http://localhost:8888/api/content/create', content);
+          return $http.post(serverApiUrl + '/content/create', content);
         }
       }
     }]);
