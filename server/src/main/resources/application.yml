@@ -1,0 +1,26 @@
+server:
+  address: 127.0.0.1
+  port: 8001
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: qwerty123
+  jpa:
+    hibernate:
+      ddl-auto: update
+security:
+  oauth2:
+    client:
+      clientId: 359351771414-1ecsnvbd463n1q1v5rg1m6oup03d7tn5.apps.googleusercontent.com
+      clientSecret: ${app.secret}
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+      clientAuthenticationScheme: form
+      scope:
+        - openid
+        - email
+        - profile
+    resource:
+      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+      preferTokenInfo: true
