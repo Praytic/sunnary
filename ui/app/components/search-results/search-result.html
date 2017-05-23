@@ -1,15 +1,15 @@
 <div class="card text-left mt-md-3">
   <div class="card-header">
-    <h4>
+    <h5>
       <a href="{{content.targetUrl}}">
         <i ng-class="content.type == 'ARTICLE' ? content.type == 'PACK' ? 'fa fa-th-large' : 'fa fa-align-left' : 'fa fa-wrench'"></i> {{content.name}}
       </a>
-    </h4>
+    </h5>
   </div>
   <div class="card-block">
     <div class="row">
       <div class="container">
-        <p>{{content.description}}</p>
+        <p>{{content.description || "No description."}}</p>
       </div>
     </div>
     <div class="row">

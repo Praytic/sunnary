@@ -1,0 +1,30 @@
+body {
+  background: #F5F2EB url('http://www.pomeni-funerare-bucuresti.ro/wp-content/uploads/background4.jpg') no-repeat;
+  background-size: cover;
+}
+
+.input-group {
+  height: 50px;
+}
+
+div.input-group-addon {
+  background-color: white;
+}
+
+div.tags {
+  border: 0;
+  box-shadow: none;
+}
+
+#logo {
+  margin-top: 200px;
+}
+
+div.tags.focused {
+  border: 0;
+}
+
+div[sunnary-search-box] {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
