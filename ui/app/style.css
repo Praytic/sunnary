@@ -12,16 +12,12 @@ div.input-group-addon {
 }
 
 div.tags {
-  border: 0;
-  box-shadow: none;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 #logo {
   margin-top: 200px;
-}
-
-div.tags.focused {
-  border: 0;
 }
 
 div[sunnary-search-box] {

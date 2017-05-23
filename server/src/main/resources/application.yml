@@ -1,6 +1,6 @@
 server:
   address: 127.0.0.1
-  port: 8001
+  port: 8002
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/postgres
