@@ -28,3 +28,8 @@ div[sunnary-search-box] {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.badge-default {
+  font-size: 1rem;
+  margin: 2px;
+}

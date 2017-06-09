@@ -13,13 +13,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="btn-group" role="group">
+      <div class="col-md-2 btn-group" role="group">
         <button class="btn btn-secondary" style="color: green">+{{content.likeCounter}}</button>
         <button class="btn btn-secondary" href="{{content.targetUrl}}">
           <span class="fa fa-eye" aria-hidden="true"></span> {{content.viewCounter}}
         </button>
       </div>
-      <div class="col-md-5 text-right">
+      <div class="col-md-10 text-right">
         <span class="badge badge-default" ng-repeat="tag in content.tags">{{tag}}</span>
       </div>
     </div>
