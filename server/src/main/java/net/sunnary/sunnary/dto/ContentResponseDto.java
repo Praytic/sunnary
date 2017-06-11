@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class ContentResponseDto {
 
+    private Long id;
     private String name;
     private String targetUrl;
     private Set<String> tags;
@@ -20,6 +21,7 @@ public class ContentResponseDto {
     }
 
     public ContentResponseDto(Content content) {
+        this.id = content.getId();
         this.name = content.getName();
         this.targetUrl = content.getTargetUrl();
         this.tags = content.getTags().stream().map(Tag::getId).collect(Collectors.toSet());
@@ -27,6 +29,14 @@ public class ContentResponseDto {
         this.description = content.getContentDescription() == null ? null : content.getContentDescription().getDescription();
         this.viewCounter = content.getViewCounter();
         this.likeCounter = content.getLikeCounter();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public long getViewCounter() {

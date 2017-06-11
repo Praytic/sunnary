@@ -1,7 +1,7 @@
 <div class="card text-left mt-md-3">
   <div class="card-header">
     <h5>
-      <a href="{{content.targetUrl}}">
+      <a href="{{content.targetUrl}}" ng-click="view(content)">
         <i ng-class="content.type == 'ARTICLE' ? content.type == 'PACK' ? 'fa fa-th-large' : 'fa fa-align-left' : 'fa fa-wrench'"></i> {{content.name}}
       </a>
     </h5>
@@ -14,9 +14,9 @@
     </div>
     <div class="row">
       <div class="col-md-2 btn-group" role="group">
-        <button class="btn btn-secondary" style="color: green">+{{content.likeCounter}}</button>
+        <button class="btn btn-secondary" ng-click="upvote(content)" style="color: green">+{{content.likeCounter}}</button>
         <button class="btn btn-secondary" href="{{content.targetUrl}}">
-          <span class="fa fa-eye" aria-hidden="true"></span> {{content.viewCounter}}
+          <a href="{{content.targetUrl}}" ng-click="view(content)"><span class="fa fa-eye" aria-hidden="true"></span> {{content.viewCounter}}</a>
         </button>
       </div>
       <div class="col-md-10 text-right">

@@ -2,15 +2,27 @@
 
 angular.module('sunnaryApp.searchResults', [])
 
-    .directive('searchResult', function () {
+    .directive('searchResult', ['Content', function (Content) {
       return {
         restrict: 'A',
         scope: {
           content: '='
         },
-        templateUrl: 'components/search-results/search-result.html'
+        templateUrl: 'components/search-results/search-result.html',
+        controller: ['$scope', 'Content',
+          function SearchResultsCtrl($scope, Content) {
+            $scope.upvote = function (content) {
+              Content.upvote(content);
+              content.likeCounter++;
+            };
+            $scope.view = function (content) {
+              Content.view(content);
+              content.viewCounter++;
+            }
+          }]
+
       };
-    })
+    }])
 
     .directive('searchResults', function () {
       return {

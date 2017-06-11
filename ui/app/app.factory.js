@@ -22,6 +22,12 @@ angular.module('sunnaryApp.factory', [])
         },
         create: function(content) {
           return $http.post(serverApiUrl + '/content/create', content);
+        },
+        upvote: function(content) {
+          return $http.post(serverApiUrl + '/stats/' + content.id + '/upvote');
+        },
+        view: function(content) {
+          return $http.post(serverApiUrl + '/stats/' + content.id + '/view');
         }
       }
     }]);
